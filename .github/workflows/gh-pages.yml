@@ -41,6 +41,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
+      - name: Build
+        env:
+            BASE_URL: ${{ vars.BASE_URL }}
+            SITE_URL: ${{ vars.SITE_URL }}
+        run: npm run build
 
   # Deployment job
   deploy:
@@ -53,3 +58,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+  
